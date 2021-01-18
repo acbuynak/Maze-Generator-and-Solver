@@ -12,7 +12,7 @@ class Node:
         self.previous = None
         self.distance = None
         self.adjacency_list = {}
-    
+
     def link(self, node, weight=1):
         """Links 2 nodes together with a weight."""
         self.adjacency_list[node] = weight
@@ -26,8 +26,8 @@ def nodes_from_maze(image) -> (Node, Node, List[Node]):
     """Generate a list of Nodes for a maze for navigation
     so that they are linked up width weighted edges based
     on the distance from one another in the maze.
-    
-    The maze must be made up of black (#000000) and white (#FFFFFF) pixels, 
+
+    The maze must be made up of black (#000000) and white (#FFFFFF) pixels,
     The start point must be either on the left or top side,
     The end point must be either on the bottom or right side.
 
@@ -89,7 +89,8 @@ def nodes_from_maze(image) -> (Node, Node, List[Node]):
 
         for y in range(maze.height):
             if pixels[x, y] == PATH:
-                if node := nodes.get((x, y)):
+                nodes.get((x, y))
+                if node is not None:
                     if last_node:
                         node.link(last_node, weight_counter)
                         weight_counter = 0
